@@ -17,12 +17,19 @@ export const CoupleDetails: React.FC = () => {
         >
           <div className="inline-flex items-center gap-4 mb-6 mt-4">
             <div className="w-12 sm:w-20 h-[1px] bg-gradient-to-r from-transparent to-brand-beige-deep/60" />
-            <span className="text-brand-beige-deep uppercase tracking-[0.5em] text-[11px] font-semibold font-sans drop-shadow-sm">The Protagonists</span>
+            <span className="text-brand-beige-deep uppercase tracking-[0.5em] text-[11px] font-semibold font-sans drop-shadow-sm">The Blessed Couple</span>
             <div className="w-12 sm:w-20 h-[1px] bg-gradient-to-l from-transparent to-brand-beige-deep/60" />
           </div>
           <h2 className="text-5xl sm:text-7xl font-display text-stone-800 tracking-tight drop-shadow-sm">
-            Isuri <span className="italic text-brand-beige-deep font-light mx-2">&</span>&nbsp;Duvindu
+            Subes <span className="italic text-brand-beige-deep font-light mx-2">&</span>&nbsp;Neomilie
           </h2>
+          <p className="mt-8 font-serif italic text-stone-500 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">
+            &ldquo;The Lord has done this, and it is marvelous in our eyes.&rdquo;
+            <span className="block not-italic text-[11px] uppercase tracking-[0.3em] text-brand-beige-deep mt-2 font-sans font-semibold">Psalm 118:23</span>
+          </p>
+          <p className="mt-6 font-serif text-stone-600 text-base sm:text-lg max-w-xl mx-auto">
+            Together with our families, we joyfully invite you to celebrate the marriage of
+          </p>
         </motion.div>
       </div>
 
@@ -37,8 +44,8 @@ export const CoupleDetails: React.FC = () => {
         >
           <div className="mb-4 flex flex-col items-center lg:items-end">
             <span className="text-brand-beige-deep uppercase tracking-[0.4em] text-[10px] font-bold mb-3 block">The Groom</span>
-            <h3 className="text-4xl sm:text-5xl font-display text-stone-800 mb-2 drop-shadow-sm">Duvindu</h3>
-            <p className="text-stone-500/90 font-serif italic text-base sm:text-lg">Son of Mr & Mrs Abeysekara</p>
+            <h3 className="text-4xl sm:text-5xl font-display text-stone-800 mb-2 drop-shadow-sm">Subes</h3>
+            <p className="text-stone-500/90 font-serif italic text-base sm:text-lg">Son of Mr. Sahadevaraj<br />and late Mrs. Jeyarani</p>
           </div>
           <div className="hidden lg:flex justify-end mt-8">
             <Heart className="w-6 h-6 text-brand-beige/60 fill-brand-beige/20 transform hover:scale-110 transition-transform cursor-pointer" />
@@ -63,7 +70,7 @@ export const CoupleDetails: React.FC = () => {
                 e.currentTarget.src = "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=800&h=1000";
                 e.currentTarget.onerror = null;
               }}
-              alt="Isuri and Duvindu"
+              alt="Subes and Neomilie"
               className="w-full h-full object-cover mix-blend-multiply transition-transform duration-[1.5s] ease-out group-hover:scale-105"
             />
             {/* Elegant inner shadow & overlay */}
@@ -91,8 +98,8 @@ export const CoupleDetails: React.FC = () => {
         >
           <div className="mb-4 flex flex-col items-center lg:items-start">
             <span className="text-brand-beige-deep uppercase tracking-[0.4em] text-[10px] font-bold mb-3 block">The Bride</span>
-            <h3 className="text-4xl sm:text-5xl font-display text-stone-800 mb-2 drop-shadow-sm">Isuri</h3>
-            <p className="text-stone-500/90 font-serif italic text-base sm:text-lg">Daughter of Mr & Mrs Perera</p>
+            <h3 className="text-4xl sm:text-5xl font-display text-stone-800 mb-2 drop-shadow-sm">Neomilie</h3>
+            <p className="text-stone-500/90 font-serif italic text-base sm:text-lg">Daughter of Mr. Hilary Speck<br />and Mrs. Diliniya Ann Speck</p>
           </div>
           <div className="hidden lg:flex justify-start mt-8">
             <Heart className="w-6 h-6 text-brand-beige/60 fill-brand-beige/20 transform hover:scale-110 transition-transform cursor-pointer" />

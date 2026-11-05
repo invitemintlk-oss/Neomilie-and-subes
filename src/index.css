@@ -4,12 +4,12 @@
 @theme {
   /* Royal Maroon & Emerald Color Palette */
   --color-brand-beige: #097969; /* Rich Emerald */
-  --color-brand-beige-deep: #722F37; /* Deep Maroon / Wine */
+  --color-brand-beige-deep: #1F5135; /* Deep Emerald (matches invitation card) */
   --color-brand-champagne: #FDFBF7; /* Ivory */
   --color-brand-ivory: #FAF9F6; /* Cream */
   --color-brand-gold: #D4AF37; /* Metallic Gold */
   --color-brand-gold-light: #F3E5AB;
-  --color-brand-mocha: #3B1C22; /* Very dark maroon for text */
+  --color-brand-mocha: #1C2B22; /* Very dark green for text */
   --color-brand-sand: #EAE3D2; /* Light Sand */
 
   --font-serif: "Cormorant Garamond", serif;
@@ -67,7 +67,7 @@ html, body {
   color: var(--color-brand-mocha) !important;
 }
 .text-stone-500 {
-  color: #722F37 !important; /* Maroon */
+  color: #1F5135 !important; /* Emerald */
 }
 .text-stone-400 {
   color: #097969 !important; /* Emerald */

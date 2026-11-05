@@ -87,7 +87,7 @@ export function EnvelopeOpening({ onComplete, onMusicStart }: { onComplete: () =
         .envelope-base {
           position: absolute;
           inset: 0;
-          background: linear-gradient(145deg, #722F37, #3B1C22);
+          background: linear-gradient(145deg, #1F5135, #0F2A1C);
           border-radius: 6px;
           box-shadow: 0 30px 60px -15px rgba(59,28,34,0.3), 0 0 0 1px rgba(212,175,55,0.4);
           z-index: 1;
@@ -171,7 +171,7 @@ export function EnvelopeOpening({ onComplete, onMusicStart }: { onComplete: () =
           font-size: 10px;
           letter-spacing: 0.45em;
           text-transform: uppercase;
-          color: #3B1C22;
+          color: #0F2A1C;
           margin-bottom: 20px;
           margin-top: auto;
           z-index: 2;
@@ -182,7 +182,7 @@ export function EnvelopeOpening({ onComplete, onMusicStart }: { onComplete: () =
           font-family: "Great Vibes", cursive;
           font-size: 60px;
           line-height: 1.1;
-          color: #3B1C22;
+          color: #0F2A1C;
           margin: 0 0 10px 0;
           font-weight: 400;
           z-index: 2;
@@ -205,7 +205,7 @@ export function EnvelopeOpening({ onComplete, onMusicStart }: { onComplete: () =
           font-size: 9.5px;
           letter-spacing: 0.22em;
           text-transform: uppercase;
-          color: #722F37;
+          color: #1F5135;
           line-height: 2.2;
           margin-bottom: auto;
           z-index: 2;
@@ -218,7 +218,7 @@ export function EnvelopeOpening({ onComplete, onMusicStart }: { onComplete: () =
           font-size: 11px;
           font-weight: 500;
           letter-spacing: 0.28em;
-          color: #3B1C22;
+          color: #0F2A1C;
         }
 
         .text-church {
@@ -227,7 +227,7 @@ export function EnvelopeOpening({ onComplete, onMusicStart }: { onComplete: () =
           font-style: italic;
           font-weight: 400;
           letter-spacing: 0.1em;
-          color: #3B1C22;
+          color: #0F2A1C;
           margin-top: 4px;
           text-transform: none;
         }
@@ -239,7 +239,7 @@ export function EnvelopeOpening({ onComplete, onMusicStart }: { onComplete: () =
           left: 0;
           width: 66%;
           height: 100%;
-          background: linear-gradient(135deg, #097969 0%, #722F37 50%, #3B1C22 100%);
+          background: linear-gradient(135deg, #097969 0%, #1F5135 50%, #0F2A1C 100%);
           background-image: url("https://www.transparenttextures.com/patterns/cream-paper.png");
           border-right: 1px solid rgba(212,175,55,0.3);
           box-shadow: 10px 0 30px -10px rgba(59,28,34,0.2);
@@ -319,7 +319,7 @@ export function EnvelopeOpening({ onComplete, onMusicStart }: { onComplete: () =
           bottom: -60px;
           left: 50%;
           transform: translateX(-50%);
-          color: #3B1C22;
+          color: #0F2A1C;
           font-family: "Montserrat", sans-serif;
           font-size: 10px;
           letter-spacing: 0.35em;
@@ -411,6 +411,12 @@ export function EnvelopeOpening({ onComplete, onMusicStart }: { onComplete: () =
                 <path d="M5,8 Q8,12 12,5" stroke="#D4AF37" strokeWidth="0.5" fill="none" opacity="0.4" className="shimmer"/>
               </svg>
 
+              <img
+                src="/y.jpeg"
+                alt="Subes & Neomilie monogram"
+                style={{ width: 96, height: 96, objectFit: 'contain', margin: '0 auto 8px', display: 'block', mixBlendMode: 'multiply' }}
+              />
+
               <div className="text-eyebrow">
                 {guestName ? `Dear ${prefix} ${guestName},` : 'Promise of Love'}
               </div>
@@ -422,9 +428,9 @@ export function EnvelopeOpening({ onComplete, onMusicStart }: { onComplete: () =
               </div>
 
               <h1 className="text-names">
-                Isuri
+                Subes
                 <span className="text-ampersand">&</span>
-                &nbsp;Duvindu
+                &nbsp;Neomilie
               </h1>
 
               <div className="divider">
@@ -435,9 +441,9 @@ export function EnvelopeOpening({ onComplete, onMusicStart }: { onComplete: () =
 
               <div className="text-details">
                 Request the honour of your presence<br />
-                <span className="text-date">Tuesday 05 January 2027 At 09:00 AM</span>
-                <span className="text-church">Hilton Colombo</span><br />
-                Colombo
+                <span className="text-date">Wednesday 27 January 2027 At 9:30 AM</span>
+                <span className="text-church">St. Mary&apos;s Cathedral</span><br />
+                Trincomalee
               </div>
             </div>
           </div>

@@ -19,18 +19,18 @@ export const CeremonyDetails: React.FC = () => {
           >
             <div className="inline-flex items-center gap-4 mb-6">
               <span className="text-brand-beige-deep uppercase tracking-[0.4em] sm:tracking-[0.5em] text-[10px] sm:text-[11px] font-bold drop-shadow-sm">
-                The Sacred Union
+                The Holy Mass
               </span>
               <div className="w-12 sm:w-20 h-[1px] bg-gradient-to-r from-brand-beige-deep/60 to-transparent" />
             </div>
 
             <h2 className="text-5xl sm:text-6xl lg:text-7xl font-display text-stone-800 mb-8 leading-[1.1] drop-shadow-sm">
               A Celebration of <br />
-              <span className="italic font-light text-brand-beige-deep">Tradition & Love</span>
+              <span className="italic font-light text-brand-beige-deep">Faith & Love</span>
             </h2>
 
             <p className="text-stone-500/90 font-serif text-lg sm:text-xl leading-relaxed mb-16 max-w-lg">
-              We are honored to invite you to witness our union as we exchange vows at Hilton Colombo, surrounded by the warmth of our loved ones.
+              Join us for the celebration of the Holy Mass as we exchange our vows before God at St. Mary's Cathedral, Trincomalee, surrounded by the warmth of our loved ones.
             </p>
 
             {/* Premium Timeline */}
@@ -42,7 +42,7 @@ export const CeremonyDetails: React.FC = () => {
                   <Calendar className="w-5 h-5 text-brand-beige-deep group-hover:scale-110 transition-transform duration-500" />
                 </div>
                 <div>
-                  <h4 className="font-serif text-2xl sm:text-3xl text-stone-800 mb-2 group-hover:text-brand-beige-deep transition-colors duration-500">Tuesday, January 05</h4>
+                  <h4 className="font-serif text-2xl sm:text-3xl text-stone-800 mb-2 group-hover:text-brand-beige-deep transition-colors duration-500">Wednesday, 27th January</h4>
                   <p className="text-stone-500/80 text-[10px] sm:text-[11px] uppercase tracking-[0.3em] font-bold">The Year Two Thousand Twenty Seven</p>
                 </div>
               </div>
@@ -53,8 +53,8 @@ export const CeremonyDetails: React.FC = () => {
                   <Clock className="w-5 h-5 text-brand-beige-deep group-hover:scale-110 transition-transform duration-500" />
                 </div>
                 <div>
-                  <h4 className="font-serif text-2xl sm:text-3xl text-stone-800 mb-2 group-hover:text-brand-beige-deep transition-colors duration-500">09:00 AM</h4>
-                  <p className="text-stone-500/80 text-[10px] sm:text-[11px] uppercase tracking-[0.3em] font-bold">Wedding Ceremony — Hilton, Colombo</p>
+                  <h4 className="font-serif text-2xl sm:text-3xl text-stone-800 mb-2 group-hover:text-brand-beige-deep transition-colors duration-500">9:30 AM</h4>
+                  <p className="text-stone-500/80 text-[10px] sm:text-[11px] uppercase tracking-[0.3em] font-bold">Holy Mass — St. Mary's Cathedral</p>
                 </div>
               </div>
 
@@ -64,8 +64,8 @@ export const CeremonyDetails: React.FC = () => {
                   <MapPin className="w-5 h-5 text-brand-beige-deep group-hover:scale-110 transition-transform duration-500" />
                 </div>
                 <div>
-                  <h4 className="font-serif text-2xl sm:text-3xl text-stone-800 mb-2 group-hover:text-brand-beige-deep transition-colors duration-500">Hilton Colombo</h4>
-                  <p className="text-stone-500/80 text-[10px] sm:text-[11px] uppercase tracking-[0.3em] font-bold">Colombo</p>
+                  <h4 className="font-serif text-2xl sm:text-3xl text-stone-800 mb-2 group-hover:text-brand-beige-deep transition-colors duration-500">St. Mary's Cathedral</h4>
+                  <p className="text-stone-500/80 text-[10px] sm:text-[11px] uppercase tracking-[0.3em] font-bold">Trincomalee</p>
                 </div>
               </div>
             </div>
@@ -121,11 +121,11 @@ export const CeremonyDetails: React.FC = () => {
               <div className="flex-1">
                 <h4 className="font-display text-2xl sm:text-4xl text-stone-800 mb-1 sm:mb-2 tracking-tight">The Celebration</h4>
                 <p className="text-stone-500/90 font-serif text-sm sm:text-base leading-relaxed">
-                  Followed by a grand celebratory buffet and festivities at Hilton Colombo.
+                  Celebration to follow at Sunshine Wedding Hall, No: 45, Green Road, Trincomalee.
                 </p>
               </div>
               <div className="inline-block px-4 sm:px-6 py-2 sm:py-3 bg-brand-champagne rounded-full border border-brand-beige/30 shadow-sm self-start sm:self-center flex-shrink-0">
-                <span className="text-brand-beige-deep font-sans font-bold tracking-[0.1em] sm:tracking-[0.2em] text-[9px] sm:text-[11px] uppercase block drop-shadow-sm">10:00 AM Onwards</span>
+                <span className="text-brand-beige-deep font-sans font-bold tracking-[0.1em] sm:tracking-[0.2em] text-[9px] sm:text-[11px] uppercase block drop-shadow-sm">To Follow</span>
               </div>
             </div>
           </motion.div>

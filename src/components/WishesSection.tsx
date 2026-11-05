@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Send, Loader2, Sparkles } from 'lucide-react';
+import { toast } from 'sonner';
+import { GOOGLE_SCRIPT_URL, isScriptConfigured } from '../config';
 
 interface Wish {
   id: string;
@@ -24,20 +26,45 @@ export const WishesSection: React.FC = () => {
   const [formData, setFormData] = useState({ name: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Load previously shared wishes from the "Wishes" sheet
+  useEffect(() => {
+    if (!isScriptConfigured()) return;
+    let cancelled = false;
+    fetch(`${GOOGLE_SCRIPT_URL}?sheet=Wishes`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (cancelled || !data?.ok || !Array.isArray(data.wishes)) return;
+        setWishes(
+          data.wishes.map((w: { name: string; message: string; createdAt: string }, i: number) => ({
+            id: `sheet-${i}-${w.createdAt}`,
+            name: w.name,
+            message: w.message,
+            createdAt: new Date(w.createdAt),
+          })),
+        );
+      })
+      .catch((err) => console.error('Error loading wishes: ', err));
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.message) return;
+    if (!formData.name.trim() || !formData.message.trim()) return;
+    if (!isScriptConfigured()) {
+      toast.error('Wishes are not connected yet. Please try again later.');
+      return;
+    }
     setIsSubmitting(true);
 
     try {
-      // Send data to Google Sheets
-      const scriptUrl = 'https://script.google.com/macros/s/AKfycbyay20jbF63BRUj8JGGbUbYkYS3Us-DpLZc2Hs34si_qKJgxs_81xpNBniXsBNFsYOt7g/exec';
-      const payload = new FormData();
+      const payload = new URLSearchParams();
       payload.append('sheet', 'Wishes');
-      payload.append('name', formData.name);
-      payload.append('message', formData.message);
+      payload.append('name', formData.name.trim());
+      payload.append('message', formData.message.trim());
 
-      await fetch(scriptUrl, {
+      await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
         body: payload,
@@ -45,16 +72,17 @@ export const WishesSection: React.FC = () => {
 
       const newWish: Wish = {
         id: Date.now().toString(),
-        name: formData.name,
-        message: formData.message,
+        name: formData.name.trim(),
+        message: formData.message.trim(),
         createdAt: new Date(),
       };
-      
-      // Prepend the new wish to the list
-      setWishes(prev => [newWish, ...prev]);
+
+      setWishes((prev) => [newWish, ...prev]);
       setFormData({ name: '', message: '' });
+      toast.success('Thank you for your blessing!');
     } catch (error) {
       console.error('Error submitting wish: ', error);
+      toast.error('Could not send your wish. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -92,7 +120,7 @@ export const WishesSection: React.FC = () => {
           <form onSubmit={handleSubmit} className="space-y-8">
             <div className="text-center mb-10">
               <p className="text-stone-500 font-serif italic text-lg leading-relaxed max-w-lg mx-auto">
-                Leave a little note or a piece of advice for our journey ahead.
+                Leave a prayer, a blessing or a little note for Subes &amp; Neomilie as they begin their journey together.
               </p>
             </div>
 

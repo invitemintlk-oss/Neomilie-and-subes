@@ -10,8 +10,6 @@ import { CeremonyDetails } from './components/CeremonyDetails';
 import { Location } from './components/Location';
 import { Timeline } from './components/Timeline';
 import { Countdown } from './components/Countdown';
-import { RSVPForm } from './components/RSVPForm';
-import { WishesSection } from './components/WishesSection';
 
 export default function App() {
   const [showInvitation, setShowInvitation] = useState(false);
@@ -60,7 +58,7 @@ export default function App() {
   }
 
   // Set the wedding date for the countdown
-  const weddingDate = new Date("2027-01-05T09:00:00");
+  const weddingDate = new Date("2027-01-27T09:30:00+05:30");
 
   return (
     <div className="font-sans text-stone-800 bg-brand-ivory overflow-hidden selection:bg-brand-beige-deep/20">
@@ -104,22 +102,17 @@ export default function App() {
           <Countdown targetDate={weddingDate} />
       </div>
 
-      <div className="py-24 sm:py-32 bg-brand-ivory relative">
-        <RSVPForm />
-      </div>
-
-      <div className="py-24 sm:py-32 bg-gradient-to-b from-brand-ivory to-white relative mt-10">
-        <WishesSection />
-      </div>
-
       {/* Elegant Footer Signature */}
       <footer className="py-12 bg-white border-t border-brand-beige/20 text-center relative overflow-hidden mt-10">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-brand-beige/10 blur-[80px] rounded-full pointer-events-none" />
         <Heart className="w-6 h-6 mx-auto mb-6 text-brand-beige-deep fill-brand-beige/20" />
-        <p className="font-display text-4xl sm:text-5xl text-stone-800 mb-2">Isuri &&nbsp;Duvindu</p>
+        <p className="font-display text-4xl sm:text-5xl text-stone-800 mb-2">Subes &&nbsp;Neomilie</p>
         <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.4em] font-sans text-stone-400 font-semibold block mb-8">
-          January 05, 2027
+          Wednesday, 27th January 2027
         </span>
+        <p className="font-serif italic text-stone-500 text-base sm:text-lg max-w-md mx-auto px-6 leading-relaxed">
+          We look forward to celebrating this blessed union with you and your family.
+        </p>
 
       </footer>
     </div>

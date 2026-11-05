@@ -1,39 +1,50 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { CheckCircle, Loader2, Heart, Sparkles } from 'lucide-react';
+import { toast } from 'sonner';
+import { GOOGLE_SCRIPT_URL, isScriptConfigured } from '../config';
 
 export const RSVPForm: React.FC = () => {
-  const [formData, setFormData] = useState({
+  const emptyForm = {
     fullName: '',
+    phone: '',
+    attendance: 'Joyfully Accepts',
     guests: '1',
-    dietaryNotes: '',
-  });
+    message: '',
+  };
+  const [formData, setFormData] = useState(emptyForm);
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const declining = formData.attendance === 'Regretfully Declines';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!isScriptConfigured()) {
+      toast.error('RSVP is not connected yet. Please try again later.');
+      return;
+    }
     setStatus('loading');
 
     try {
-      const scriptUrl = 'https://script.google.com/macros/s/AKfycbyay20jbF63BRUj8JGGbUbYkYS3Us-DpLZc2Hs34si_qKJgxs_81xpNBniXsBNFsYOt7g/exec';
-      const payload = new FormData();
+      const payload = new URLSearchParams();
       payload.append('sheet', 'RSVP');
-      payload.append('name', formData.fullName);
-      payload.append('guests', formData.guests);
-      payload.append('dietary', formData.dietaryNotes);
-      payload.append('attendance', 'Yes');
+      payload.append('name', formData.fullName.trim());
+      payload.append('phone', formData.phone.trim());
+      payload.append('attendance', formData.attendance);
+      payload.append('guests', declining ? '0' : formData.guests);
+      payload.append('message', formData.message.trim());
 
-      await fetch(scriptUrl, {
+      await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
         body: payload,
       });
 
       setStatus('success');
-      setFormData({ fullName: '', guests: '1', dietaryNotes: '' });
+      setFormData(emptyForm);
     } catch (error) {
       console.error('Error sending RSVP: ', error);
       setStatus('error');
+      toast.error('Could not send your RSVP. Please check your connection and try again.');
     }
   };
 
@@ -68,7 +79,7 @@ export const RSVPForm: React.FC = () => {
           </h2>
           
           <p className="text-stone-500/90 font-serif text-lg leading-relaxed mb-6">
-            Your presence means the world to us. Please kindly let us know if you will be able to join our celebration.
+            Your presence means the world to us. Please kindly let us know if you will be able to join us on Wednesday, 27th January 2027.
           </p>
 
           <div className="w-12 h-[1px] bg-brand-beige/50 mx-auto lg:mx-0" />
@@ -121,31 +132,65 @@ export const RSVPForm: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-[10px] uppercase tracking-[0.2em] font-bold text-stone-500 mb-3 ml-2">Number of Guests</label>
-                  <div className="relative group">
-                    <select
-                      className="w-full bg-white/80 px-6 py-4 rounded-full border border-stone-200/60 focus:ring-2 focus:ring-brand-beige/30 focus:border-brand-beige-deep/40 outline-none transition-all duration-300 appearance-none font-serif italic text-lg shadow-inner text-stone-700 cursor-pointer"
-                      value={formData.guests}
-                      onChange={(e) => setFormData({ ...formData, guests: e.target.value })}
-                    >
-                      <option value="1">Just Me (1 Guest)</option>
-                      <option value="2">We are coming! (2 Guests)</option>
-                      <option value="3">3 Guests</option>
-                      <option value="4">4 Guests</option>
-                    </select>
-                    <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-brand-beige-deep transition-transform duration-300 group-hover:scale-110">
-                      <Heart className="w-5 h-5 fill-brand-beige/30 drop-shadow-sm" />
-                    </div>
-                  </div>
+                  <label className="block text-[10px] uppercase tracking-[0.2em] font-bold text-stone-500 mb-3 ml-2">Phone Number</label>
+                  <input
+                    type="tel"
+                    placeholder="E.g., 077 123 4567"
+                    className="w-full bg-white/80 px-6 py-4 rounded-full border border-stone-200/60 focus:ring-2 focus:ring-brand-beige/30 focus:border-brand-beige-deep/40 outline-none transition-all duration-300 font-serif italic text-lg shadow-inner placeholder:text-stone-300"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  />
                 </div>
 
                 <div>
-                  <label className="block text-[10px] uppercase tracking-[0.2em] font-bold text-stone-500 mb-3 ml-2">Dietary Notes (Optional)</label>
+                  <label className="block text-[10px] uppercase tracking-[0.2em] font-bold text-stone-500 mb-3 ml-2">Will You Attend?</label>
+                  <div className="grid grid-cols-2 gap-3">
+                    {['Joyfully Accepts', 'Regretfully Declines'].map((opt) => (
+                      <button
+                        type="button"
+                        key={opt}
+                        onClick={() => setFormData({ ...formData, attendance: opt })}
+                        className={`px-4 py-4 rounded-full border text-[11px] uppercase tracking-[0.15em] font-bold transition-all duration-300 ${
+                          formData.attendance === opt
+                            ? 'bg-brand-beige-deep text-white border-brand-beige-deep shadow-md'
+                            : 'bg-white/80 text-stone-500 border-stone-200/60 hover:border-brand-beige-deep/40'
+                        }`}
+                      >
+                        {opt}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {!declining && (
+                  <div>
+                    <label className="block text-[10px] uppercase tracking-[0.2em] font-bold text-stone-500 mb-3 ml-2">Number of Guests</label>
+                    <div className="relative group">
+                      <select
+                        className="w-full bg-white/80 px-6 py-4 rounded-full border border-stone-200/60 focus:ring-2 focus:ring-brand-beige/30 focus:border-brand-beige-deep/40 outline-none transition-all duration-300 font-serif italic text-lg shadow-inner appearance-none text-stone-700 cursor-pointer"
+                        value={formData.guests}
+                        onChange={(e) => setFormData({ ...formData, guests: e.target.value })}
+                      >
+                        <option value="1">Just Me (1 Guest)</option>
+                        <option value="2">2 Guests</option>
+                        <option value="3">3 Guests</option>
+                        <option value="4">4 Guests</option>
+                        <option value="5">5 Guests</option>
+                      </select>
+                      <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-brand-beige-deep transition-transform duration-300 group-hover:scale-110">
+                        <Heart className="w-5 h-5 fill-brand-beige/30 drop-shadow-sm" />
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                <div>
+                  <label className="block text-[10px] uppercase tracking-[0.2em] font-bold text-stone-500 mb-3 ml-2">Message (Optional)</label>
                   <textarea
-                    placeholder="We'd love to know if you have any allergies..."
+                    placeholder="Any note for the couple or dietary requirements..."
                     className="w-full bg-white/80 px-6 py-4 rounded-[2rem] border border-stone-200/60 focus:ring-2 focus:ring-brand-beige/30 focus:border-brand-beige-deep/40 outline-none transition-all duration-300 h-28 resize-none font-serif italic text-lg shadow-inner placeholder:text-stone-300"
-                    value={formData.dietaryNotes}
-                    onChange={(e) => setFormData({ ...formData, dietaryNotes: e.target.value })}
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   />
                 </div>
 
@@ -158,7 +203,7 @@ export const RSVPForm: React.FC = () => {
                     {status === 'loading' ? (
                       <Loader2 className="w-5 h-5 animate-spin" />
                     ) : (
-                      'Confirm Attendance'
+                      'Send RSVP'
                     )}
                   </button>
                 </div>
