@@ -10,7 +10,6 @@ import { CeremonyDetails } from './components/CeremonyDetails';
 import { Location } from './components/Location';
 import { Timeline } from './components/Timeline';
 import { Countdown } from './components/Countdown';
-import { RSVPForm } from './components/RSVPForm';
 import { WishesSection } from './components/WishesSection';
 
 export default function App() {
@@ -103,10 +102,6 @@ export default function App() {
           </div>
           <Countdown targetDate={weddingDate} />
       </div>
-
-      <section id="rsvp" className="py-24 sm:py-32 bg-white relative">
-        <RSVPForm />
-      </section>
 
       <section id="wishes" className="py-24 sm:py-32 bg-gradient-to-b from-white to-brand-ivory relative">
         <WishesSection />
