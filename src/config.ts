@@ -1,10 +1,8 @@
 // Central wedding details — edit here and every section updates.
 
 // Google Apps Script Web App URL (see code.ts / google-apps-script/SETUP.md).
-// Set VITE_GOOGLE_APPS_SCRIPT_URL in .env (or Vercel env vars), or paste the URL below.
 export const GOOGLE_SCRIPT_URL: string =
-  (import.meta.env.VITE_GOOGLE_APPS_SCRIPT_URL as string | undefined) ||
-  'PASTE_YOUR_WEB_APP_URL_HERE';
+  'https://script.google.com/macros/s/AKfycbyTP9hC0eJ49y8ZpsAKFkuxvvomPaUZescYhdpVoXClVSEn0VkofvKAxyI54llNTDuW/exec';
 
 export const isScriptConfigured = () => GOOGLE_SCRIPT_URL.startsWith('https://script.google.com/');
 
