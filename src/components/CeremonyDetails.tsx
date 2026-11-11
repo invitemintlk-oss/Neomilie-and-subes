@@ -86,17 +86,13 @@ export const CeremonyDetails: React.FC = () => {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-brand-champagne/40 rounded-[2rem] sm:rounded-[3rem] blur-2xl -z-20" />
 
             {/* Main Creative Image Frame */}
-            <div className="relative aspect-[3/4] sm:aspect-[4/5] rounded-[2rem] sm:rounded-[3rem] overflow-hidden border-[6px] sm:border-[8px] border-white shadow-[0_20px_50px_rgba(176,137,104,0.2)] bg-white group">
+            <div className="relative aspect-[1159/1600] rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden border-[6px] sm:border-[8px] border-white shadow-[0_20px_50px_rgba(176,137,104,0.2)] bg-white group">
               <img
-                src="/2.jpg"
-                onError={(e) => {
-                  e.currentTarget.src = "https://images.unsplash.com/photo-1519225421980-715cb02151ff?auto=format&fit=crop&q=80&w=800&h=1000";
-                  e.currentTarget.onerror = null;
-                }}
-                alt="Ceremony Venue"
-                className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-[1.03]"
+                src="/invitation-card.png"
+                alt="Subes & Neomilie wedding invitation card"
+                loading="lazy"
+                className="w-full h-full object-contain transition-transform duration-[2s] ease-out group-hover:scale-[1.02]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/5 pointer-events-none mix-blend-overlay opacity-opacity-70 group-hover:opacity-100 transition-opacity duration-1000" />
             </div>
 
             {/* Decorative Floating Circles */}

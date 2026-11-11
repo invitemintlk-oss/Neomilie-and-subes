@@ -11,7 +11,7 @@ export const isScriptConfigured = () => GOOGLE_SCRIPT_URL.startsWith('https://sc
 export const WEDDING = {
   groom: 'Subes',
   bride: 'Neomilie',
-  groomParents: 'Son of Mr. Sahadevaraj and late Mrs. Jeyarani',
+  groomParents: 'Son of Mr. Sahayadevarajah and Mrs. Jeyarani',
   brideParents: 'Daughter of Mr. Hilary Speck and Mrs. Diliniya Ann Speck',
   dateISO: '2027-01-27T09:30:00+05:30',
   dateShort: '27 . 01 . 2027',

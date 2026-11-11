@@ -1,6 +1,6 @@
 # RSVP + Wishes → Google Sheets setup
 
-Spreadsheet: https://docs.google.com/spreadsheets/d/1wY39t5pK6E9FfM-kDqV7zK6cX2xeKqixJJZNC6WU-qk/edit
+Spreadsheet: https://docs.google.com/spreadsheets/d/1JOSx_CuxyxsUyTMuV0UAZGGt5cOcjpuaTDDF0KejHyc/edit
 
 1. Open the spreadsheet → **Extensions → Apps Script**.
 2. Delete everything in `Code.gs` and paste the full contents of `code.ts` (same as `google-apps-script/code.gs`). Save.

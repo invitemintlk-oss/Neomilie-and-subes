@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { Sparkles } from 'lucide-react';
 import { FloatingPetals } from './FloatingPetals';
+import { getGuestDisplayName } from '../guest';
 
 export const Hero: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -10,9 +11,7 @@ export const Hero: React.FC = () => {
   const scale = useTransform(scrollY, [0, 800], [1, 1.1]);
   const opacity = useTransform(scrollY, [0, 400], [1, 0]);
 
-  const params = new URLSearchParams(window.location.search);
-  const prefix = params.get('prefix');
-  const guestName = params.get('name');
+  const guestName = getGuestDisplayName();
 
   return (
     <div ref={containerRef} className="relative h-screen flex items-center justify-center overflow-hidden bg-brand-ivory/50">
@@ -49,12 +48,6 @@ export const Hero: React.FC = () => {
           transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1], delay: 0.8 }}
           className="flex flex-col items-center"
         >
-          {/* SN monogram logo */}
-          <img
-            src="/y.jpeg"
-            alt="Subes & Neomilie monogram"
-            className="w-24 h-24 sm:w-32 sm:h-32 object-contain rounded-full mix-blend-multiply mb-4 sm:mb-6"
-          />
 
           <span className="text-brand-beige-deep uppercase tracking-[0.4em] sm:tracking-[0.6em] text-xs sm:text-sm font-medium mb-4 sm:mb-6 block drop-shadow-sm font-sans">
             Wedding Invitation
@@ -83,7 +76,7 @@ export const Hero: React.FC = () => {
             <div className="hidden sm:block h-[1px] w-20 bg-gradient-to-r from-transparent to-brand-beige-deep/40" />
             <p className="text-[1.1rem] sm:text-2xl font-serif italic text-stone-700 tracking-wide px-4 text-center max-w-xl leading-relaxed drop-shadow-[0_2px_4px_rgba(255,255,255,0.5)]">
               {guestName ? (
-                <>We cordially invite <span className="font-bold not-italic text-brand-beige-deep">{prefix} {guestName}</span></>
+                <>We cordially invite <span className="font-bold not-italic text-brand-beige-deep">{guestName}</span> to celebrate our special day with us.</>
               ) : (
                 "Together with our families, we joyfully invite you to celebrate our marriage"
               )}

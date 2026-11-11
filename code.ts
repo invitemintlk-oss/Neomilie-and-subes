@@ -2,7 +2,7 @@
  * Subes & Neomilie — Wedding RSVP + Wishes backend (Google Apps Script)
  *
  * Paste this whole file into Extensions > Apps Script of the spreadsheet:
- * https://docs.google.com/spreadsheets/d/1wY39t5pK6E9FfM-kDqV7zK6cX2xeKqixJJZNC6WU-qk/edit
+ * https://docs.google.com/spreadsheets/d/1JOSx_CuxyxsUyTMuV0UAZGGt5cOcjpuaTDDF0KejHyc/edit
  *
  * - Sheets "RSVP" and "Wishes" are created automatically (with styled headers)
  *   on the first submission, or immediately if you run setupSheets() once.
@@ -11,7 +11,7 @@
  * - GET   (no params)            -> health check
  */
 
-const SPREADSHEET_ID = '1wY39t5pK6E9FfM-kDqV7zK6cX2xeKqixJJZNC6WU-qk';
+const SPREADSHEET_ID = '1JOSx_CuxyxsUyTMuV0UAZGGt5cOcjpuaTDDF0KejHyc';
 
 const SHEETS = {
   RSVP: {
@@ -63,7 +63,7 @@ function doPost(e) {
 
     sheet.appendRow(row);
     const last = sheet.getLastRow();
-    sheet.getRange(last, 1).setNumberFormat('dd/MM/yyyy hh:mm a');
+    sheet.getRange(last, 1).setNumberFormat('dd/MM/yyyy hh:mm AM/PM');
     if (key === 'WISHES') sheet.getRange(last, 4).insertCheckboxes().check();
 
     return json_({ ok: true, row: last });

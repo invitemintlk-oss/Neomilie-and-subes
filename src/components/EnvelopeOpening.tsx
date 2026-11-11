@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { getGuestDisplayName } from '../guest';
 
 export function EnvelopeOpening({ onComplete, onMusicStart }: { onComplete: () => void, onMusicStart?: () => void }) {
   const [opened, setOpened] = useState(false);
   
-  const params = new URLSearchParams(window.location.search);
-  const prefix = params.get('prefix');
-  const guestName = params.get('name');
+  const guestName = getGuestDisplayName();
 
   useEffect(() => {
     if (opened) {
@@ -411,14 +410,8 @@ export function EnvelopeOpening({ onComplete, onMusicStart }: { onComplete: () =
                 <path d="M5,8 Q8,12 12,5" stroke="#D4AF37" strokeWidth="0.5" fill="none" opacity="0.4" className="shimmer"/>
               </svg>
 
-              <img
-                src="/y.jpeg"
-                alt="Subes & Neomilie monogram"
-                style={{ width: 96, height: 96, objectFit: 'contain', margin: '0 auto 8px', display: 'block', mixBlendMode: 'multiply' }}
-              />
-
               <div className="text-eyebrow">
-                {guestName ? `Dear ${prefix} ${guestName},` : 'Promise of Love'}
+                {guestName ? `Dear ${guestName},` : 'Promise of Love'}
               </div>
 
               <div className="divider">
